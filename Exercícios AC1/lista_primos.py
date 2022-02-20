@@ -2,20 +2,7 @@
 
 	Recebe um número natural n, com n >= 2, e retorna uma
 	lista com todos o números primos estritamente menores
-	que n, em ordem crescente.
-
-	Parâmetros
-	----------
-	n : int
-		Número natural que define o limite superior da lista.
-
-	Retorno
-	-------
-	list
-		itens : int
-		descrição : Lista com todos os números primos menores
-			que n, em ordem crescente.
-	"""
+	que n, em ordem crescente."""
 
 def eh_primo(n):
 	if n < 2:

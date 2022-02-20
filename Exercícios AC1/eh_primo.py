@@ -10,18 +10,7 @@
 	29 é primo:
 		divisores de 29: 1, 29
 	30 NÃO é primo:
-		divisores de 30: 1, 2, 3, 5, 6, 10, 15, 30
-
-	Parâmetros
-	----------
-	n : int
-		Número natural a ser testado.
-
-	Retorno
-	-------
-	bool
-		True se n for um número primo e False caso contrário.
-	"""
+		divisores de 30: 1, 2, 3, 5, 6, 10, 15, 30."""
 
 def eh_primo(n):
 	if n < 2:
