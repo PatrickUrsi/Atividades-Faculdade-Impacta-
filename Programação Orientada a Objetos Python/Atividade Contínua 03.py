@@ -7,8 +7,8 @@
 class Produto:
 
 	def __init__(self, nome, preco):
-		self.__nome = nome
-		self.__preco = preco
+		self.nome = nome
+		self.preco = preco
 
 
 	@property
@@ -48,7 +48,7 @@ class ProdutoFisico:
 
 	def __init__(self, nome, preco, peso):
 		super().__init__(nome, preco)
-		self.__peso = peso
+		self.peso = peso
 
 
 	@property
@@ -68,6 +68,8 @@ class ProdutoFisico:
 
 
 	def peso_em_kg(self):
+		peso_em_kg = peso // 1000
+		return peso_em_kg
 		"""
 		Método que calcula o peso do produto em quilogramas.
 		Deve devolver (retornar) o valor do peso convertido em quilogramas.
@@ -80,6 +82,7 @@ class ProdutoFisico:
 
 
 	def calcular_preco_com_frete(self):
+		if peso_em_kg
 		"""
 		Método que calcula o valor final do produto físico com o frete incluso.
 		Para cada quilograma no peso do produto, acrescente R$5 ao seu valor final.
