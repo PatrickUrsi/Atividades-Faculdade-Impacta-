@@ -1,14 +1,14 @@
 # Programação Orientada a Objetos
 # AC03 ADS-EaD - Implementação de classes, herança, polimorfismo e lançamento de exceções.
 #
-# Email Impacta: ______________@aluno.faculdadeimpacta.com.br
+# Email Impacta: patrick.ursi@aluno.faculdadeimpacta.com.br
 
 
 class Produto:
 
 	def __init__(self, nome, preco):
-		self.__nome = nome
-		self.__preco = preco
+		self.nome = nome
+		self.preco = preco
 
 
 	@property
@@ -44,11 +44,11 @@ class Produto:
 		return self.__preco
 
 
-class ProdutoFisico:
+class ProdutoFisico(Produto):
 
 	def __init__(self, nome, preco, peso):
 		super().__init__(nome, preco)
-		self.__peso = peso
+		self.peso = peso
 
 
 	@property
@@ -68,35 +68,14 @@ class ProdutoFisico:
 
 
 	def peso_em_kg(self):
-		"""
-		Método que calcula o peso do produto em quilogramas.
-		Deve devolver (retornar) o valor do peso convertido em quilogramas.
-		Exemplos:
-			- Se o valor do atributo privado peso for 1000, este método retorna 1;
-			- Se o valor do atributo privado peso for 7500, este método retorna 7.5;
-			- Se o valor do atributo privado peso for 600, este método retorna 0.6;
-		"""
-		pass
+		return self.peso / 1000
 
 
 	def calcular_preco_com_frete(self):
-		"""
-		Método que calcula o valor final do produto físico com o frete incluso.
-		Para cada quilograma no peso do produto, acrescente R$5 ao seu valor final.
-
-		Deve devolver (retornar) o valor final do produto acrescido do frete (que depende
-		do peso do produto em quilogramas, conforme descrito acima).
-
-		Dica: você pode (e deve) utilizar o método peso_em_kg para obter o peso
-		do produto em kg.
-
-		Exemplos:
-			- Se o produto (preço) custa R$100 e seu peso é 1000 gramas, retorna R$105;
-			- Se o produto (preço) custa R$50 e seu peso é 2500 gramas, retorna R$62.5;
-			- Se o produto (preço) custa R$10 e seu peso é 100 gramas, retorna R$10.5;
-			
-		"""
-		pass
+		cal1 = self.peso_em_kg()
+		cal2 = self.preco
+		calcular_preco_com_frete = (cal1 * 5) + cal2
+		return calcular_preco_com_frete	
 
 
 class ProdutoEletronico:
