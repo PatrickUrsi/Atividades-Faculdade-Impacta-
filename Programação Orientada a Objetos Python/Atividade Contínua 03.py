@@ -75,83 +75,43 @@ class ProdutoFisico(Produto):
 		cal1 = self.peso_em_kg()
 		cal2 = self.preco
 		calcular_preco_com_frete = (cal1 * 5) + cal2
-		return calcular_preco_com_frete	
+		return calcular_preco_com_frete
 
 
-class ProdutoEletronico:
-	"""
-	Classe ProdutoEletronico: deve representar os elementos básicos de um produto eletrônico.
-	Esta classe herda da classe ProdutoFisico.
-	"""
+class ProdutoEletronico(ProdutoFisico):
 
 	def __init__(self, nome, preco, peso, tensao, tempo_garantia):
-		"""
-		Inicializa nome, preco e peso utilizando o construtor da superclasse ProdutoFisico, 
-		(use a função super()), e também inicializa os atributos privados tensao e
-		tempo_garantia da seguinte forma:
-			- O atributo privado tensao não deve ser declarado diretamente no
-			construtor.	Ao invés disso, utilize o setter "tensao" para inicializá-lo
-			indiretamente, pois dessa forma ele será validado. 
+		super().__init__(nome, preco, peso)
+		self.tensao = tensao
+		self.__tempo_garantia = tempo_garantia
 
-			- O atributo privado tempo_garantia deve ser inicializado diretamente
-			no construtor, sem necessidade de validação.
-		"""
-		pass
 
-	
 	@property
 	def tensao(self):
-		"""
-		Property tensao: devolve (retorna) o valor do atributo privado tensao.
-		"""
-		pass
+		return self.__tensao
 
 
 	@property
 	def tempo_garantia(self):
-		"""
-		Property tempo_garantia: devolve (retorna) o valor do atributo privado tempo_garantia.
-		"""
-		pass
+		return self.__tempo_garantia
 
-	
+
 	@tensao.setter
 	def tensao(self, nova_tensao):
-		"""
-		Setter tensao: recebe uma nova_tensao e atualiza o valor do atributo privado
-		tensao com esse valor (que representa a tensão de um aparelho eletrônico, 
-		com os seguintes valores possíveis: 0, indicando que o produto é bivolt,
-		127 ou 220).
-
-		Antes de modificar o valor do atributo privado tensao, verifique se seu valor
-		é do tipo int (utilize a função isinstance para fazer essa verificação),
-		caso contrário lance uma exceção do tipo TypeError.
-		Caso nova_tensao seja do tipo int, verifique se seu valor é igual a 0, ou
-		127 ou 220. Caso nova_tensao seja diferente desses valores, lance uma 
-		exceção do tipo ValueError.
-		"""
-		pass
+		if isinstance(nova_tensao, int):
+			if nova_tensao == 0 or nova_tensao == 127 or nova_tensao == 220:
+				self.__tensao = nova_tensao
+			else:
+				raise ValueError
+		else:
+			raise TypeError
 
 
 	def calcular_preco_com_frete(self):
-		"""
-		Método que calcula o valor final do produto eletrônico com o frete incluso.
-		O cálculo é o mesmo que o produto físico, mas deverá ser acrescido 1% 
-		ao valor final do frete.
-		Dica: você pode reaproveitar o método calcular_preco_com_frete() da
-		superclasse (a classe ProdutoFisico), através da função super(). Ou seja,
-		obtenha o valor do frete do produto físico, depois acrescente 1% e devolva
-		(retorne) esse valor.
-
-		Deve devolver (retornar) o valor final do produto acrescido do frete (será
-		o mesmo valor com frete do produto físico, com o acréscimo de 1%).
-
-		Exemplos:
-			- Se o produto (preço) custa R$100 e seu peso é 1000 gramas, retorna R$106.05;
-			- Se o produto (preço) custa R$50 e seu peso é 2000 gramas, retorna R$60.6;
-			- Se o produto (preço) custa R$10 e seu peso é 800 gramas, retorna R$14.14;
-		"""
-		pass
+		cal1 = self.peso_em_kg()
+		cal2 = self.preco
+		calcular_preco_com_frete = (((cal1 * 5) + cal2) * 0.01) + ((cal1 * 5) + cal2)
+		return calcular_preco_com_frete
 
 
 class Ebook:
@@ -211,6 +171,3 @@ class Ebook:
 		a zero), lance um erro do tipo ValueError.
 		"""
 		pass
-
-
-
